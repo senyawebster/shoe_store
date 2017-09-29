@@ -10,8 +10,11 @@
 
     </div>
     <div class="col col-md-3">
-      <!-- Delete-Store button -->
-      
+      <!-- Delete-Store button through hidden form input -->
+      <form class="" action="/store/<%= @store.id() %>" method="post">
+        <input type="hidden" value="delete">
+        <button type="submit" class="btn btn-danger">Delete Store</button>
+      </form>
     </div>
   </div>
 </div>
