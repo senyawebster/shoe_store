@@ -7,12 +7,16 @@
     </div>
     <div class="col col-md-6">
       <!-- Edit store name thru form input -->
-
+      <form action="/store/<%= @store.id() %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <button type="submit" class="btn btn-warning">Rename</button>
+        <input type="text" name="rename">
+      </form>
     </div>
     <div class="col col-md-3">
       <!-- Delete-Store button through hidden form input -->
       <form class="" action="/store/<%= @store.id() %>" method="post">
-        <input type="hidden" value="delete">
+        <input type="hidden" name="_method" value="delete">
         <button type="submit" class="btn btn-danger">Delete Store</button>
       </form>
     </div>

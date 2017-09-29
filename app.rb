@@ -36,10 +36,18 @@ get '/store/:id' do
 end
 # END CURRENT ITEM TO WORK ON
 
-post '/store/:id' do
+delete '/store/:id' do
   @store = Store.find(params.fetch('id').to_i())
   @store.delete()
   @stores = Store.all()
+  redirect '/'
+end
+
+patch '/store/:id' do
+  rename = params.fetch('rename')
+  @store = Store.find(params.fetch('id').to_i())
+  @store.update({:name => rename})
+  @store = Store.all()
   redirect '/'
 end
 
