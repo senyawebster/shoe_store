@@ -10,6 +10,8 @@ get '/' do
   erb(:index)
 end
 
+
+# Beginning of store routing
 get '/create_store' do
   @shoes = Shoe.all()
   @stores = Store.all()
@@ -24,15 +26,22 @@ post '/create_store' do
   erb(:index)
 end
 
-
-
-
-# CURRENT ITEM TO WORK ON
 get '/store/:id' do
   @store = Store.find(params[:id])
   @shoes = Shoe.all()
   @unstocked_shoes = @shoes - @store.shoes
   erb(:store_info)
+end
+
+# CURRENT ITEM TO WORK ON
+post '/store/add_shoe/:id' do
+  # @store = Store.find(params[:id])
+  # @shoes = Shoe.all
+  # shoe_ids = params['shoe_ids']
+  # shoe_ids.each do |x|
+  #   store.brands.push(Shoe.find(brand_id))
+  # end
+  # redirect "/store/#{store.id}"
 end
 # END CURRENT ITEM TO WORK ON
 
@@ -52,6 +61,7 @@ patch '/store/:id' do
 end
 
 
+# Beginning of shoe routing
 get '/create_shoe' do
   @shoes = Shoe.all()
   @stores = Store.all()
@@ -68,6 +78,8 @@ post '/create_shoe' do
 end
 
 get '/shoe/:id' do
-
+  @shoe = Shoe.find(params[:id])
+  @stores = Store.all()
+  @unstocked_stores = @stores - @shoe.stores
   erb(:shoe_info)
 end

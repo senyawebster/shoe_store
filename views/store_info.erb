@@ -25,10 +25,22 @@
 
 <div class="row">
   <div class="col col-md-6">
-    list of shoes store already stocks
+    Shoes Currently Stocked:
   </div>
   <div class="col col-md-6">
-    checkboxes of shoes store does not yet stock
+    <h3>Unstocked Shoes:</h3>
+    <% if @shoes.any? %>
+      <form action="/store/add_shoe/<%= @store.id %>" method="post">
+        <% @unstocked_shoes.each do |x| %>
+          <!-- <div class="checkbox"> -->
+            <label>
+              <input type="checkbox" name="shoe_ids" value="<%= x.id %>"><%= x.brand %>
+            </label>
+          <!-- </div> -->
+        <% end %>
+        <button type="submit" name="button">Add Shoe(s)</button>
+      </form>
+    <% end %>
   </div>
 
 </div>
