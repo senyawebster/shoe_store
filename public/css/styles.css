@@ -13,3 +13,12 @@ body  {
   text-align: center;
   color: white;
 }
+
+.jumbotron {
+  text-align: center;
+  margin: 20px;
+}
+
+#jumbo {
+  background-color: darkgrey;
+}

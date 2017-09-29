@@ -1,0 +1,67 @@
+<div class="jumbotron" id="jumbo">
+  <h1>Shoe Store</h1>
+</div>
+
+<div class="row">
+  <!-- Add Shoe Store -->
+  <div class="col col-lg-6">
+    <div class="card">
+      <!-- <div class="card-body"> -->
+        <h3>Add a Store:</h3>
+        <form action="/create_store" method="post">
+          <div class="form-group">
+            <label for="name">Store Name:</label>
+            <input type="text" name="name" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-info">Add Store</button>
+        </form><br><p>_______________________________________________</p><br>
+      <!-- </div> -->
+      <% if @stores.any?%>
+        <% @stores.each do |x| %>
+          <button class="btn btn-info" type="button">
+            <a href="/store/<%=x.id%>"><%=x.name%></a>
+          </button><br>
+        <% end %>
+      <% else %>
+        <h5>There are no stores yet</h5>
+      <% end %>
+    </div>
+  </div>
+  <!-- End Add Shoe Store -->
+
+  <!-- Add Shoe Brand -->
+  <div class="col col-lg-6">
+    <div class="card">
+      <!-- <div class="card-body"> -->
+        <h3>Add a Shoe:</h3>
+        <form action="/create_shoe" method="post">
+          <div class="row">
+            <div class="col col-sm-8">
+              <div class="form-group">
+                <label for="brand">Shoe Brand:</label>
+                <input type="text" name="brand" class="form-control" required>
+              </div>
+            </div>
+            <div class="col col-sm-4">
+              <div class="form-group">
+                <label for="price">Shoe Price:</label>
+                <input type="number" name="price" class="form-control" placeholder="$80" required>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-info">Add Shoe</button>
+        </form><br><p>_______________________________________________</p><br>
+      <!-- </div> -->
+      <% if @shoes.any?%>
+        <% @shoes.each do |x| %>
+          <button class="btn btn-info" type="button">
+            <a href="/shoe/<%=x.id%>"><%=x.brand%>, <%=x.price%> </a>
+          </button><br>
+        <% end %>
+      <% else %>
+        <h5>There are no shoes yet</h5>
+      <% end %>
+    </div>
+  </div>
+  <!-- End Add Shoe Brand -->
+</div>
