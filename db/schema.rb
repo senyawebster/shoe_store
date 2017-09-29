@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170929160450) do
   end
 
   create_table "shoes_stores", force: :cascade do |t|
-    t.integer "brand_id"
+    t.integer "shoe_id"
     t.integer "store_id"
   end
 
