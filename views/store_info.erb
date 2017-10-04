@@ -30,16 +30,27 @@
   <div class="col col-md-6">
     <h3>Unstocked Shoes:</h3>
     <% if @shoes.any? %>
-      <form action="/store/add_shoe/<%= @store.id %>" method="post">
+      <!-- <form action="/store/add_shoe/<%= @store.id %>" method="post">
         <% @unstocked_shoes.each do |x| %>
-          <!-- <div class="checkbox"> -->
             <label>
               <input type="checkbox" name="shoe_ids" value="<%= x.id %>"><%= x.brand %>
             </label>
-          <!-- </div> -->
         <% end %>
         <button type="submit" name="button">Add Shoe(s)</button>
+      </form> -->
+
+      <form action="/store/add_shoe/<%= @store.id %>" method="post">
+        <label for="shoe_id">Select a Brand</label>
+        <select id='shoe_id' name='shoe_id' type='text'>
+          <% @unstocked_shoes.each() do |x| %>
+            <option value="<%= x.id()%>"> <%= x.brand() %> </option>
+          <% end %>
+        </select>
+        <button type="submit">Add Brand</button>
       </form>
+
+    <% else %>
+      <p>There are no shoes yet</p>
     <% end %>
   </div>
 

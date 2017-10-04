@@ -35,13 +35,14 @@ end
 
 # CURRENT ITEM TO WORK ON
 post '/store/add_shoe/:id' do
-  # @store = Store.find(params[:id])
-  # @shoes = Shoe.all
-  # shoe_ids = params['shoe_ids']
-  # shoe_ids.each do |x|
-  #   store.brands.push(Shoe.find(brand_id))
-  # end
-  # redirect "/store/#{store.id}"
+  store = Store.find(params[:id])
+  shoes = Shoe.all
+  @unstocked_shoes = shoes - store.shoes
+  brand = params['brand']
+  brand.each do |brand|
+    store.shoes.push(Shoe.find(brand))
+  end
+  redirect "/store/#{store.id}"
 end
 # END CURRENT ITEM TO WORK ON
 
