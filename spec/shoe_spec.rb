@@ -13,8 +13,15 @@ describe(Shoe) do
     expect(shoe.save()).to(eq(false))
   end
 
-  # it("validates presence of description") do
-  #   shoe = Shoe.new({:description => ""})
-  #   expect(shoe.save()).to(eq(false))
-  # end
+  it("validates unique brand name") do
+    Shoe.create({:brand => "Nike"})
+    shoe = Shoe.new({:brand => "Nike"})
+    expect(shoe.save()).to(eq(false))
+  end
+
+  it("capitalizes shoe brand") do
+    shoe = Shoe.new({:brand => "nike"})
+    shoe.save()
+    expect(shoe.brand).to(eq("Nike"))
+  end
 end

@@ -13,8 +13,16 @@ describe(Store) do
     expect(store.save()).to(eq(false))
   end
 
-  # it("validates presence of description") do
-  #   store = Store.new({:name => ""})
-  #   expect(store.save()).to(eq(false))
-  # end
+  it("validates unique store name") do
+    Store.create({:name => "Store Name"})
+    store = Store.new({:name => "Store Name"})
+    expect(store.save()).to(eq(false))
+  end
+
+  it("capitalizes store name") do
+    store = Store.new({:name => "place"})
+    store.save()
+    expect(store.name).to(eq("Place"))
+  end
+
 end
