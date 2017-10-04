@@ -7,11 +7,11 @@ class Shoe < ActiveRecord::Base
    private
 
    def upcase
-     array = self.name.split
+     array = self.brand.split
      array.each() do |x|
        x.capitalize!
      end
-     self.name = array.join(' ')
+     self.brand = array.join(' ')
    end
 
 end

@@ -39,7 +39,7 @@ post '/store/add_shoe/:id' do
   shoes = Shoe.all
   @unstocked_shoes = shoes - store.shoes
   brand = params['brand']
-  brand.each do |brand|
+  @unstocked_shoes.each do |brand|
     store.shoes.push(Shoe.find(brand))
   end
   redirect "/store/#{store.id}"
