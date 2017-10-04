@@ -55,7 +55,7 @@
       <% if @shoes.any?%>
         <% @shoes.each do |x| %>
           <button class="btn btn-info" type="button">
-            <a href="/shoe/<%=x.id%>"><%=x.brand%>, <%=x.price%> </a>
+            <a href="/shoe/<%=x.id%>"><%=x.brand%> — $<%=x.price%> </a>
           </button><br>
         <% end %>
       <% else %>

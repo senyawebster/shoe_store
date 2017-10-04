@@ -4,14 +4,14 @@ class Shoe < ActiveRecord::Base
   validates(:brand, uniqueness: { case_sensitive: false })
   before_save(:upcase)
 
-    private
+   private
 
-    def upcase
-      array = self.name.split
-      array.each() do |x|
-        x.capitalize!
-      end
-      self.name = array.join(' ')
-    end
+   def upcase
+     array = self.name.split
+     array.each() do |x|
+       x.capitalize!
+     end
+     self.name = array.join(' ')
+   end
 
 end

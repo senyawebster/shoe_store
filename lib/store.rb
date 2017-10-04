@@ -4,14 +4,14 @@ class Store < ActiveRecord::Base
   validates(:name, uniqueness: { case_sensitive: false })
   before_save(:upcase)
 
-  private
+private
 
-  def upcase
-    array = store.name.split
-    array.each do |x|
-      x.capitalize!
-    end
-    store.name = array.join(' ')
+def upcase
+  array = self.name.split
+  array.each do |x|
+    x.capitalize!
   end
+  self.name = array.join(' ')
+end
 
 end
